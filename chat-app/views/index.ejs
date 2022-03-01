@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+  <%- include('./shared/header.ejs')%>
+  <%- include('./shared/navbar.ejs')%>
+
+  <div class="container">
+    <h1>Online Friends</h1>
+      <div id="onlineFriends">
+        
+      </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/scripts/socket/init.js"></script>
+  <script src="/scripts/socket/home.js"></script>
+  <%- include('./shared/footer.ejs')%>

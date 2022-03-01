@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+  <%- include('./shared/header.ejs')%>
+  <%- include('./shared/navbar.ejs')%>
+  <div class="filter">
+    <div class="container">
+      <div class="mb-3">
+        <form class="dropdown" action="/" method="GET">
+          <select name="category" class="form-control">
+            <option value="all">All</li>
+            <option value="clothes">Clothes</li>
+            <option value="phones">Phones</li>
+            <option value="laptops">Laptops</li>
+          </select>
+          <button type="submit" class="btn btn-primary btn-customize-color">Fillter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <% if(validationError)  { %>
+    <div class="container">
+      <p class="alert alert-danger">
+        <%= validationError.msg %>
+      </p>
+    </div>
+  <% } %>
+  <div class="getProducts">
+    <div class="container">
+      <% if(products.length === 0 ) {%>
+        <h1 class="alert alert-danger">There is no product</h1>
+        <% } else {%>
+      <div class="row">
+        <%
+          for (let product of products){ %>
+            <div class="col-md-6 col-lg-4 col-xl-3">
+              <div class="card" style="width: 18rem;">
+                <img src="<%= product.image %>" class="card-img-top" alt="..." height="250px">
+                <div class="card-body">
+                  <h5 class="card-title"><a href="/product/<%= product._id %>"><%= product.name %></a></h5>
+                  <p class="card-text"><%= product.price %></p>
+                  <form method="POST">
+                    <div class="mb-3 form-check">
+                      <input type="number" class="form-control" name="amount" >
+                      <input type="hidden" name="name" value="<%= product.name %>" >
+                      <input type="hidden" name="price" value="<%= product.price %>" >
+                      <input type="hidden" name="productId" value="<%= product._id %>" >
+                      <input type="hidden" name="redirectTo" value="/" >
+                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                      <input type="submit" class="btn btn-primary btn-customize-color" style="margin-top:0" value="Add To Card" formaction="/cart"/>
+                      <%#<input type="submit" value="Delete Product" class="btn btn-danger" style="height:38px" formaction="/admin/delete"/>%>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+        <%}%>
+      </div>
+      <% } %>
+    </div>
+  </div>
+
+
+  <%- include('./shared/footer.ejs')%>

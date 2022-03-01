@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+  <%- include('./shared/header.ejs')%>
+  <%- include('./shared/navbar.ejs')%>
+
+ <div class="container">
+     <h3 class="text-center">Add Product</h3>
+    <form 
+        action="/admin/add" 
+        method="POST"
+        enctype="multipart/form-data" <%# all input not text type default encode is urlEncoded if all input are type text--%>
+        >
+        <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" >
+        <% let nameErrors = validationError.find(err => err.param === "name") 
+           if(nameErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= nameErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Price</label>
+        <input type="number" class="form-control" name="price">
+        <% let priceErrors = validationError.find(err => err.param === "price") 
+           if(priceErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= priceErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Description</label>
+        <textarea type="text" class="form-control" name="description"></textarea>
+        <% let descriptionErrors = validationError.find(err => err.param === "description") 
+           if(descriptionErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= descriptionErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">category</label>
+            <select name="category" class="form-control">
+                <option value="all">All</li>
+                <option value="clothes">Clothes</li>
+                <option value="phones">Phones</li>
+                <option value="laptops">Laptops</li>
+            </select>
+            <% let categoryErrors = validationError.find(err => err.param === "category") 
+            if(categoryErrors){
+            %>
+            <p class="alert alert-danger" style="margin-top: 10px"><%= categoryErrors.msg %></p>
+            <% } %>
+        </div>
+        <div class="input-group mb-3">
+            <input type="file" class="form-control" name="image" aria-label="Upload">
+            <button class="btn btn-outline-secondary" type="button" >Button</button>
+            <% let imageErrors = validationError.find(err => err.param === "image") 
+            if(imageErrors){
+            %>
+            <p class="alert alert-danger" style="margin-top: 10px"><%= imageErrors.msg %></p>
+            <% } %>
+        </div>
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-customize-color">Add New Product</button>
+        </div>
+        </form>
+    </div>
+
+    <%- include('./shared/footer.ejs')%>

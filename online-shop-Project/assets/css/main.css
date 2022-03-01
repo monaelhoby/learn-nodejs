@@ -1,0 +1,48 @@
+.navbar .nav-item .nav-link{
+    padding: 0;
+    margin: 8px 20px 8px auto
+}
+.navbar .nav-item .active,
+.navbar .nav-item .nav-link:hover{
+    color: #c14794 !important;
+    border-bottom: 2px solid #c14794;
+}
+.navbar{
+    background: #FFF;
+}
+.btn-customize-color{
+    background: #c14794 !important;
+    margin-top: 20px;
+    border: 1px solid #c14794;
+}
+.btn-customize-color:hover{
+    background: #FFF  !important;
+    color: #c14794;
+    border: 1px solid #c14794;
+}
+.card-title a,
+select option{
+    color:#545454
+}
+.filter{
+    margin-bottom: 30px;
+}
+.filter select {
+    width: 100%;
+    background: #FFF;
+    text-align: left;
+    padding: 10px;
+    border-radius: 3px;
+    border:1px solid #545454;
+    color:#545454
+}
+.hint-auth{
+    margin-top:10px
+}
+.hint-auth span{
+    color: #545454;
+    margin-right: 10px;
+}
+.hint-auth a{
+    color: #c14794;
+}

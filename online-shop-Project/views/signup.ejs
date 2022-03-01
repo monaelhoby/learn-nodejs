@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+  <%- include('./shared/header.ejs')%>
+  <%- include('./shared/navbar.ejs')%>
+
+ <div class="container">
+    <form action="/signup" method="POST">
+        <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" >
+        <% let nameErrors = validationError.find(err => err.param === "name") 
+           if(nameErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= nameErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email">
+        <% let emailErrors = validationError.find(err => err.param === "email") 
+           if(emailErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= emailErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password">
+        <% let passwordErrors = validationError.find(err => err.param === "password") 
+           if(passwordErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= passwordErrors.msg %></p>
+        <% } %>
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Confirm Password</label>
+        <input type="password" class="form-control" name="confirmPassowrd">
+        <% let confirmPasswordErrors = validationError.find(err => err.param === "confirmPassword") 
+           if(confirmPasswordErrors){
+        %>
+        <p class="alert alert-danger" style="margin-top: 10px"><%= confirmPasswordErrors.msg %></p>
+        <% } %>
+        </div>
+        </div>
+        <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-customize-color">Create Account</button>
+        </div>
+        </form>
+
+    <div class="hint-auth text-center">
+        <span>Already have account? </span> <a href="/login"> Login</a>
+    </div>
+
+    <% if(authError) {%>
+        <p class="alert alert-danger"><%= authError %></p>
+    <% } %>
+
+ </div>
+
+    <%- include('./shared/footer.ejs')%>

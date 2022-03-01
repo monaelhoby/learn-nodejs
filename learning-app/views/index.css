@@ -1,0 +1,10 @@
+input{
+    width: 70%;
+    border: 1px solid #330;
+    padding: 15px;
+    border-radius: 3px;
+    margin: auto auto 20px;
+}
+h1{
+    color: #303;
+}

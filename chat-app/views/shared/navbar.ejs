@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-light" style='background: #5b166f !important; padding:0;margin-bottom:60px'>
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"><img src="/images/logos.jpg" width="80" height="80" /></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link <%= pageTitle === 'Home'? 'active' : ''%>" 
+            aria-current="page" href="/">Home</a>
+          </li>
+          <!-- <li class="nav-item">
+            <a class="nav-link <%# pageTitle === 'Friends'? 'active' : ''%>" 
+            aria-current="page" href="/">Friends</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link <%# pageTitle === 'Groups'? 'active' : ''%>" 
+            href="/admin/add">Groups</a>
+          </li> -->
+        </ul>
+        <div class="d-flex">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <% if(isUser) {%>
+              <input type="hidden" value="<%= isUser %>" name="myId" id="myId"/>
+              <div class="dropdown" style="margin-right:15px">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="friendrequestsdropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background: transparent">
+                  <i class="fa fa-users fa-2x" aria-hidden="true"></i>
+                 </button>
+                <ul id="friendRequests" class="dropdown-menu" aria-labelledby="friendrequestsdropdown">
+                  <% if(friendRequests.length === 0) {%>
+                    <span>No friend requests</span>
+                  <%} else {%>
+                  <% for(let request of friendRequests){ %>
+                    <li>
+                      <a class="dropdown-item" href="/profile/<%= request.id%>">
+                      <%= request.name%>
+                      </a>
+                    </li>
+                  <% } } %>
+                </ul>
+              </div>
+              <form action="/logout" method="POST">
+                <button type="submit" class="btn btn-danger"><i class="fa fa-sign-out fa-2x" style="color:#FFF"></i>
+                </button>
+              </form>
+            <% } else { %> 
+            <li class="nav-item ">
+              <a class="nav-link <%= pageTitle === 'Login'? 'active' : ''%>" href="/login">Login</a>
+            </li>
+            <li class="nav-item ">
+              <a class="nav-link <%= pageTitle === 'Signup'? 'active' : ''%>" href="/signup">Signup</a>
+            </li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </div>
+</nav>

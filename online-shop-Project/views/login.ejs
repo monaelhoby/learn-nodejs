@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+  <%- include('./shared/header.ejs')%>
+  <%- include('./shared/navbar.ejs')%>
+
+ <div class="container">
+    <form action="/login" method="POST">
+        <div class="mb-3">
+        <label class="form-label">Email address</label>
+        <input type="email" class="form-control" name="email">
+        </div>
+        <div class="mb-3">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-control" name="password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-customize-color">Login</button>
+    </form>
+    <br />
+    <% if(authError) {%>
+    <p class="alert alert-danger"><%= authError%></p>
+    <%}%>
+    <div class="hint-auth">
+        <span>Don't have account? </span> <a href="/signup"> Create Account</a>
+    </div>
+ </div>
+
+    <%- include('./shared/footer.ejs')%>
