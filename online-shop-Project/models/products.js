@@ -20,7 +20,7 @@ exports.getAllProducts = () => {
     //close connection
 
     // make new promise to use reutrned value outside file in another func.
-    //i make new promise tto controll it by myself
+    //i make new promise to controll it by myself
     return new Promise((resolve, reject) => {
         mongoose.connect(DB_url).then(() => {
             return productModel.find()
